@@ -1,0 +1,10 @@
+
+  WEYL Refresh TODO
+
+- Implement everythig in terms of the ANSI standard.
+- Rename all functions that do not conform to the conventions in the
+  ANSI standard. i.e. minus? -> minusp.
+- Better organize the generic functions defintions, probably in an
+  interface file.
+- Better separate the definitions in WEYL from WEYLI.
+- Implement custom errors.
