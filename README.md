@@ -57,7 +57,7 @@ Unscheduled
 The WEYL-KERNEL package would form the core routines for WEYL and
 WEYL-USER. The WEYL package would be used by other packages. The
 WEYL-USER package would be for interactive use. This approach would
-hopefully negate the necessity for
+hopefully negate the necessity for `use-weyl-package`.
 
 ### Copyright / Acknowledgements / Disclaimer
 
