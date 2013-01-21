@@ -1,7 +1,7 @@
 ## Weyl Computer Algebra Substrate
 
 This repository contains an updated version of the [Weyl computer
-algebra substrate][WEYL] from [Cornell University][Cornell. It is
+algebra substrate][WEYL] from [Cornell University][Cornell]. It is
 [ASDF][] loadable, but is currently limited to [SBCL][]. It will be
 updated to compile and load on other implementations. The original
 sources were extracted from the [SimLab release 1-0][SimLab].
@@ -34,9 +34,9 @@ development tools can be used in concert with Weyl's symbolic tools.
 
 ### Documentation and Examples
 
-The postscript form of a comprehensive manual is available in file 
+The PDF form of a comprehensive manual is available in file 
 
-  weyl/doc/manual/manual.ps
+  weyl/reference/Weyl Manual.pdf
 
 This manual gives many examples of the use of Weyl and the meshing code.
 
