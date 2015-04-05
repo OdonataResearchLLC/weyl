@@ -116,10 +116,10 @@
   (labels ((search-list (list)
 	     (or (member class list)
 		 (loop for c in list
-		       when (search-list (sb-mop:class-direct-superclasses c))
+		       when (search-list (closer-mop:class-direct-superclasses c))
                        return t))))
     (or (eql class super-class)
-	(search-list (sb-mop:class-direct-superclasses super-class)))))
+	(search-list (closer-mop:class-direct-superclasses super-class)))))
 
 (defmacro weyli::%apply (function &rest args)
   `(common-lisp:apply ,function ,@args))
