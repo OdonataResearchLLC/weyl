@@ -31,10 +31,26 @@ development tools can be used in concert with Weyl's symbolic tools.
 
 * Clone the Weyl repository
 * Compile and load with ASDF : `(asdf:load-system :weyl)`
+You'll also need an installation of [Closer-mop][MOP].
+
+The Quicklisp route may be easier,
+* Install [Quicklisp][QUICKLISP]
+* Clone the Weyl repository.
+* Make Weyl accessible to Quicklisp
+  ``` bash
+  ln -s $PWD/matlisp <quicklisp-directory>/local-projects
+  ```
+* Fire up lisp
+  ``` lisp
+  (load "<quicklisp-directory>/setup.lisp")
+  (ql:quickload :weyl)
+  ```
+[MOP]: https://common-lisp.net/project/closer/closer-mop.html
+[QUICKLISP]: http://www.quicklisp.org/
 
 ### Documentation and Examples
 
-The PDF form of a comprehensive manual is available in file 
+The PDF form of a comprehensive manual is available in file
 
   weyl/reference/Weyl Manual.pdf
 
