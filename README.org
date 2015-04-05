@@ -1,10 +1,11 @@
-## Weyl Computer Algebra Substrate
+* Weyl Computer Algebra Substrate
 
-This repository contains an updated version of the [Weyl computer
-algebra substrate][WEYL] from [Cornell University][Cornell]. It is
-[ASDF][] loadable, but is currently limited to [SBCL][]. It will be
-updated to compile and load on other implementations. The original
-sources were extracted from the [SimLab release 1-0][SimLab].
+This repository contains an updated version of the [[https://www.cs.cornell.edu/rz/computer-algebra.html][Weyl computer
+algebra substrate]] from [[https://www.cs.cornell.edu/][Cornell University]]. It is [[http://common-lisp.net/project/asdf/][ASDF]] loadable, and uses
+[[https://common-lisp.net/project/closer/closer-mop.html][Closer-MOP]]. It currently is known to work with [[http://sbcl.sourceforge.net/][SBCL]], [[http://ccl.clozure.com/][CCL]], [[http://sourceforge.net/projects/ecls/][ECL]] (and probably
+many others).
+
+The original sources were extracted from the [[https://www.cs.cornell.edu/Info/Projects/SimLab/releases/release-1-0.html][SimLab release 1-0]].
 
 Weyl is an extensible algebraic manipulation substrate that has been
 designed to represent all types of algebraic objects. It deals not
@@ -16,58 +17,42 @@ Weyl is implemented as an extension of Common Lisp using the Common
 Lisp Object Standard so that all of Common Lisp's facilities and
 development tools can be used in concert with Weyl's symbolic tools.
 
-[WEYL]: https://www.cs.cornell.edu/rz/computer-algebra.html
-[Cornell]: https://www.cs.cornell.edu/
-[ASDF]: http://common-lisp.net/project/asdf/
-[SBCL]: http://sbcl.sourceforge.net/
-[SimLab]: https://www.cs.cornell.edu/Info/Projects/SimLab/releases/release-1-0.html
+* Installation
 
-### System requirements
+- Install quicklisp http://www.quicklisp.org/beta/.
+- Clone the Weyl repository,
+#+BEGIN_SRC shell
+   > git clone git@github.com:matlisp/weyl.git #or, git@github.com:OdonataResearchLLC/weyl.git
+   > ln -s $PWD/matlisp <quicklisp-directory>/local-projects
+#+END_SRC
+Fire up your lisp implementation and load as usual with quicklisp:
+#+BEGIN_SRC lisp
+  CL-USER> (ql:quickload :weyl)
+  CL-USER> (in-package :weyl)
+  WEYL>
+#+END_SRC
 
-* SBCL
-* ASDF
-
-### Installation
-
-* Clone the Weyl repository
-* Compile and load with ASDF : `(asdf:load-system :weyl)`
-You'll also need an installation of [Closer-mop][MOP].
-
-The Quicklisp route may be easier,
-* Install [Quicklisp][QUICKLISP]
-* Clone the Weyl repository.
-* Make Weyl accessible to Quicklisp
-  ``` bash
-  ln -s $PWD/matlisp <quicklisp-directory>/local-projects
-  ```
-* Fire up lisp
-  ``` lisp
-  (load "<quicklisp-directory>/setup.lisp")
-  (ql:quickload :weyl)
-  ```
-[MOP]: https://common-lisp.net/project/closer/closer-mop.html
-[QUICKLISP]: http://www.quicklisp.org/
-
-### Documentation and Examples
+* Documentation and Examples
 
 The PDF form of a comprehensive manual is available in file
-
+#+BEGIN_SRC
   weyl/reference/Weyl Manual.pdf
+#+END_SRC
 
 This manual gives many examples of the use of Weyl and the meshing code.
 
-### Tasks
+* Tasks
 
-Scheduled
+** Scheduled
 
-* (0.2.0) Write unit tests based on the examples in the manual.
-* (0.3.0) Replace SBCL specific code and test on other
+- (0.2.0) Write unit tests based on the examples in the manual.
+- (0.3.0) Replace SBCL specific code and test on other
   implementations.
 
-Unscheduled
+** Unscheduled
 
-* Implement custom conditions.
-* Better separate the definitions in WEYL from WEYLI. It would be nice
+- Implement custom conditions.
+- Better separate the definitions in WEYL from WEYLI. It would be nice
   to have a WEYL-KERNEL, WEYL, and a WEYL-USER package.
 
 The WEYL-KERNEL package would form the core routines for WEYL and
@@ -75,7 +60,7 @@ WEYL-USER. The WEYL package would be used by other packages. The
 WEYL-USER package would be for interactive use. This approach would
 hopefully negate the necessity for `use-weyl-package`.
 
-### Copyright / Acknowledgements / Disclaimer
+* Copyright / Acknowledgements / Disclaimer
 
 All code is copyrighted Cornell University, 1995.
 
