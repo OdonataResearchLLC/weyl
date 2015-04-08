@@ -13,7 +13,7 @@
 (defsystem :weyl
   :description "WEYL: A computer algebra substrate."
   :version "0.1.0"
-  :depends-on (#:closer-mop)
+  :depends-on ("closer-mop")
   :license "Custom"
   :components
   ((:file "packages")
