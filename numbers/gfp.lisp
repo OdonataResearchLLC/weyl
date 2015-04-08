@@ -22,7 +22,7 @@
 (defmethod number-of-elements ((domain GFq))
   (expt (characteristic domain) (field-degree domain)))
 
-(defgeneric make-GFp-domain (number number)
+(defgeneric make-GFp-domain (number number~)
   (:documentation
    "The purpose of this method is unknown."))
 

@@ -997,7 +997,7 @@ testing."))
 	(one *coefficient-domain*)
 	(poly-simp p result))))
 
-(defgeneric resultant (polynomial polynomial variable)
+(defgeneric resultant (polynomial polynomial~ variable)
   (:documentation
    "The purpose of this method is unknown."))
 
