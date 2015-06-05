@@ -980,11 +980,8 @@ arrays."))
 (defmethod-sd ge-deriv ((exp ge-expt) (var ge-atom))
   (let ((base (base-of exp))
 	(power (exponent-of exp)))
-    (cond ((depends-on? power var)
-	   (error "Not yet implemented"))
-	  ((and (number? power) (= power 2))
-	   (* 2 base (ge-deriv base var)))
-	  (t (* power (expt base (- power 1)))))))
+    (cond ((depends-on? power var) (* exp (ge-deriv (* power (log base)) var)))
+	  (t (* power (expt base (- power 1)) (ge-deriv base var))))))
 
 (defmethod-sd ge-deriv ((exp ge-application) (var ge-atom))
   (let* ((args (args-of exp))
@@ -1326,7 +1323,29 @@ arrays."))
   (loop for e in exp
 	do (setq kernels (different-kernels e kernels)))
   kernels)
+;;
+(defgeneric lispify (exp &optional package))
 
+(defmethod lispify ((exp symbol) &optional (package *package*)) (intern (symbol-name exp) package))
+
+(defmethod lispify ((expr number) &optional (package *package*)) expr)
+(defmethod lispify ((expr rational-integer) &optional (package *package*)) (slot-value expr 'value))
+(defmethod lispify ((expr rational-number) &optional (package *package*)) (cl:/ (slot-value expr 'numerator) (slot-value expr 'denominator)))
+
+(defmethod lispify ((var ge-variable) &optional (package *package*)) (lispify (slot-value var 'symbol) package))
+
+(defmethod lispify ((exp ge-application) &optional (package *package*))
+  (list* (intern (string-upcase (slot-value (funct-of exp) 'name)) package) (mapcar #'(lambda (x) (lispify x package)) (args-of exp))))
+
+(defmethod lispify ((expr ge-plus) &optional (package *package*))
+  (list* (intern "+" package) (mapcar #'(lambda (q) (lispify q package)) (terms-of expr))))
+
+(defmethod lispify ((expr ge-times) &optional (package *package*))
+  (list* (intern "*" package) (mapcar #'(lambda (q) (lispify q package)) (terms-of expr))))
+
+(defmethod lispify ((expr ge-expt) &optional (package *package*))
+  (list (intern "EXPT" package) (lispify (base-of expr) package) (lispify (exponent-of expr) package)))
+;;
 (defmethod substitute (value var expr &rest ignore)
   (declare (ignore value var ignore))
   expr)
