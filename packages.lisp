@@ -91,6 +91,7 @@
     "EXPRS-OF"
     "EXPAND"
     "EXPT"
+    "EXP"
     "FACTOR"
     "FACTORIAL"
     "FIELD"
@@ -108,7 +109,7 @@
     "GE-APPLICATION?"
     "GE-COS?"
     "GE-DERIV?"
-    "GE-EQN=?"       
+    "GE-EQN=?"
     "GE-EQN>?"
     "GE-EQN>=?"
     "GE-EQUAL"
@@ -324,7 +325,7 @@
     complex conjugate realpart imagpart
     sqrt exp log phase signum minusp zerop plusp
     sin cos tan asin acos atan sinh cosh tanh asinh acosh atanh
-    numerator denominator reduce 
+    numerator denominator reduce
     map delete member replace substitute getf union intersection
     apply funcall variable
     type-of)
@@ -387,3 +388,4 @@ it."
 		:use '(#-Rel8 LISP #+Rel8 FUTURE-COMMON-LISP
 		       #+PCL PCL #+CLOS CLOS)
 		:colon-mode :external))
+
