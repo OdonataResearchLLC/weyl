@@ -1331,6 +1331,7 @@ arrays."))
 (defmethod lispify ((expr number) &optional (package *package*)) expr)
 (defmethod lispify ((expr rational-integer) &optional (package *package*)) (slot-value expr 'value))
 (defmethod lispify ((expr rational-number) &optional (package *package*)) (cl:/ (slot-value expr 'numerator) (slot-value expr 'denominator)))
+(defmethod lispify ((expr floating-point-number) &optional (package *package*)) (slot-value expr 'value))
 
 (defmethod lispify ((var ge-variable) &optional (package *package*)) (lispify (slot-value var 'symbol) package))
 
