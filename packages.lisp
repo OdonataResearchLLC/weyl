@@ -293,6 +293,7 @@
     "STRING-OF"
     "SUBFACE?"
     "SUBSTITUTE"
+    "LISPIFY"
     "TAYLOR"
     "TERMS-OF"
     "TETRAHEDRON?"
