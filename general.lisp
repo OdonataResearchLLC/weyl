@@ -893,10 +893,10 @@ arrays."))
       (apply #'depends-on? (args-of exp) vars)))		     
 
 (defmethod depends-on? ((exp ge-plus) &rest vars)
-  (depends-on? (terms-of exp) vars))
+  (apply #'depends-on? (terms-of exp) vars))
 
 (defmethod depends-on? ((exp ge-times) &rest vars)
-  (depends-on? (terms-of exp) vars))
+  (apply #'depends-on? (terms-of exp) vars))
 
 (defmethod depends-on? ((exp ge-expt) &rest vars)
   (or (apply #'depends-on? (base-of exp) vars)
