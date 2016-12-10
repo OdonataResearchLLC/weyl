@@ -17,7 +17,7 @@
   (define-domain-creator matrix-space ((ring ring))
     (make-instance 'matrix-space
                    :coefficient-domain ring
-                   :print-function 'make-space-print-object)
+                   :print-function 'matrix-space-print-object)
     :predicate #'(lambda (d)
                    (and (eql (class-name (class-of d)) 'matrix-space)
                         (eql (coefficient-domain-of d) ring)))))

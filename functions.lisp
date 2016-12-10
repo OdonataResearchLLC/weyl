@@ -251,6 +251,18 @@
          (zero domain))
         (t whole)))
 
+(def-ge-1oper EXP (x))
+
+(defsimplify-funct EXP (domain whole exp)
+  (cond ((cl:floatp exp)
+         (make-element domain (cl:exp exp)))
+	((ge-log? exp)
+	 (simplify (first (args-of exp))))
+        (t whole)))
+
+(defderiv-funct EXP
+  (make-app-function '(x) (exp 'x)))
+
 (def-ge-1oper LOG (x))
 
 (defsimplify-funct log (domain whole exp)
